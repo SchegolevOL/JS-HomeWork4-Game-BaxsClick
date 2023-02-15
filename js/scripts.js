@@ -1,27 +1,15 @@
 let count = prompt("Введите количество ящиков: ");
 
-let maxTime;
-let t = prompt("Выберете время\n1-1:00\n2-1:30\n3-2:00");
-switch (t) {
-  case "1":
-    maxTime = 60;
-    break;
-  case "2":
-    maxTime = 90;
-    break;
-  case "3":
-    maxTime = 120;
-    break;
+let maxTime = maxTimeGame();
 
-  default:
-    break;
-}
+
+
 
 let contener = document.querySelector(".contener");
 let contenerStyle = getComputedStyle(contener);
 let time = document.querySelector("#time");
 let countElement = document.querySelector("#count");
-let timeStule = getComputedStyle(time);
+//let timeStule = getComputedStyle(time);
 
 let timeMinute = Math.floor(maxTime / 60);
 let timeSecond = maxTime % 60;
@@ -70,10 +58,10 @@ let idTime = setInterval(() => {
 let idCount = setInterval(() => {
   countElement.innerText = `Count: ${count}`;
   if (count == 0) {
-    alert("Vin");
+    alert("victory!!!!");
     clear();
   }
-}, 1000);
+}, 100);
 
 let idBox = setInterval(() => {
   for (const box of boxs) {
@@ -91,4 +79,21 @@ function clear() {
   clearInterval(idTime);
   clearInterval(idBox);
   clearInterval(idCount);
+}
+function maxTimeGame(){
+  let t = prompt("Выберете время\n1-1:00\n2-1:30\n3-2:00");
+  switch (t) {
+    case "1":
+      return 60;
+      break;
+    case "2":
+      return 90;
+      break;
+    case "3":
+      return 120;
+      break;
+  
+    default:
+      break;
+  }
 }
